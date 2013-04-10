@@ -3,9 +3,10 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		if log_in(params[:user][:name], params[:user][:password])		
+		user = log_in(params["user"]["name"], params["user"]["password"])	
+		if user
 			session[:remember_token] = user.remember_token
-			redirect_to root_url
+			redirect_to user_path(user)
 		else
 			flash.now[:error] = "Incorrect user name or password"
 			render :new

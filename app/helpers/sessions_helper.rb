@@ -6,23 +6,28 @@ module SessionsHelper
 		if user && user.password == password
 			user.remember_token = generate_token
 			user.save!
-			true
+			return user
 		else
 			false
 		end
 	end
 
 	def current_user
+		return @curent_user = nil unless session[:remember_token]
 		@current_user ||= User.find_by_remember_token(session[:remember_token])
 	end
 
 	def log_out
-		@current_user = nil
 		session[:remember_token] = nil
+		@current_user = nil
 	end
 
 	def logged_in?
 		not current_user.nil?
+	end
+
+	def admin?
+		current_user && current_user.name == "admin"
 	end
 
 	private

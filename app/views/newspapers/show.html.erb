@@ -1,0 +1,21 @@
+<p class = "lead">
+	<big><%= @newspaper.title %></big> offers the following subscription plans
+</p>
+
+<ol>
+	<% @newspaper.subscription_plans.each do |subscription_plan| %>
+		<li class="well">
+			Subscription type: <%= subscription_plan.weekly == true ? "weekly" : "daily" %>
+			<%= number_to_currency(subscription_plan.price) %>
+			<small>
+				<%#= link_to 'subscribe', new_newspaper_subscription_path(@newspaper) %>
+			</small>
+		</li>
+  <% end %>
+</ol>
+
+<ul class="nav nav-pills">
+  <li>
+  	<%= link_to 'Edit Newspaper', edit_newspaper_path(@newspaper) %>
+  </li>
+</ul>

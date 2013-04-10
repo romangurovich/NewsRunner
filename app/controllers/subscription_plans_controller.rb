@@ -13,6 +13,7 @@ class SubscriptionsController < ApplicationController
 
 	def create
 		@subscription_plan = SubscriptionPlan.new(params[:subscription_plan])
+		@subscription_plan.newspaper_id = params[:newspaper_id]
 
 		if @subscription_plan.save
 			flash[:notice] = "Added subscription to #{@subscription_plan.newspaper.title}!"

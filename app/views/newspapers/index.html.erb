@@ -1,4 +1,8 @@
-<h3>Newspapers</h3>
+<p class = "lead"><big>Newspapers</big>
+	<% if admin? %>	
+		<small>(<%= link_to "Make a new one?", new_newspaper_path %>)</small>
+	<% end %>
+</p>
 
 <ol>
 	<% @newspapers.each do |newspaper| %>

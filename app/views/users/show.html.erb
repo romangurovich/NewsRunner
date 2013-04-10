@@ -1,5 +1,6 @@
 <p class = "lead">
-	<big><%= @user.name %></big> is subscribed to the following newspapers
+	<big><%= @user.name %></big> 
+	<%= @user.subscription_plans.empty? ? "is not subscribed to any newspapers " : "is subscribed to the following newspapers" %>
 </p>
 
 <ol>

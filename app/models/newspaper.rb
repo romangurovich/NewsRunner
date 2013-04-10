@@ -4,4 +4,5 @@ class Newspaper < ActiveRecord::Base
   validates :title, uniqueness: { scope: :editor }
 
   has_many :subscription_plans, inverse_of: :newspaper
+  accepts_nested_attributes_for :subscription_plans
 end

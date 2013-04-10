@@ -1,0 +1,28 @@
+<%= form_for(newspaper) do |f| %>
+	<p>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	<p>
+
+	<p>
+		<%= f.label :editor %>
+		<%= f.text_field :editor %>
+	<p>
+
+	<% unless newspaper.persisted? %>
+		<%= f.fields_for :subscription_plans do |subscription_plan| %>
+			<p>
+				<%= subscription_plan.label :subscription_type %>
+				<%= subscription_plan.select :subscription_type, [['weekly', 1], ['daily', 0]] %>
+			</p>
+			<p>
+				<%= subscription_plan.label :price %>
+				<%= subscription_plan.text_field :price %>
+			</p>
+		<% end %>
+	<% end %>
+
+	<p>
+		<%= f.submit newspaper.persisted? ? "Update Newspaper" : "Create Newspaper" %>
+	</p>
+<% end %>
