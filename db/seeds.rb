@@ -1,0 +1,33 @@
+ActiveRecord::Base.transaction do
+	n1 = Newspaper.create!(title: "Tech Crunch", editor: "Mike Arrington")
+	n2 = Newspaper.create!(title: "Wall Street Journal", editor: "Dog")
+	n3 = Newspaper.create!(title: "SF Sentinel", editor: "Hobo")
+	n4 = Newspaper.create!(title: "Meow York Times", editor: "Cat")
+
+	u1 = User.create!(name: "Ben", password: "jerry")
+	u2 = User.create!(name: "Don Quixote", password: "windmill")
+	u3 = User.create!(name: "Optimus Prime", password: "dumptruck")
+	u4 = User.create!(name: "Man", password: "plan")
+	u5 = User.create!(name: "Fiddler", password: "roof")
+
+	plan1 = n1.subscription_plans.create!(price: 20.00, weekly: true)
+	plan2 = n1.subscription_plans.create!(price: 50.00, weekly: false)
+	plan3 = n2.subscription_plans.create!(price: 35.00, weekly: true)
+	plan4 = n2.subscription_plans.create!(price: 65.00, weekly: false)
+	plan5 = n3.subscription_plans.create!(price: 4.00, weekly: true)
+	plan6 = n3.subscription_plans.create!(price: 20.00, weekly: false)
+	plan7 = n4.subscription_plans.create!(price: 200.00, weekly: true)
+	plan8 = n4.subscription_plans.create!(price: 600.00, weekly: false)
+
+	sub1 = u1.subscriptions.create!(subscription_plan_id: 1)
+	sub2 = u1.subscriptions.create!(subscription_plan_id: 2)
+	sub3 = u2.subscriptions.create!(subscription_plan_id: 3)
+	sub4 = u2.subscriptions.create!(subscription_plan_id: 4)
+	sub5 = u3.subscriptions.create!(subscription_plan_id: 2)
+	sub6 = u3.subscriptions.create!(subscription_plan_id: 1)
+	sub7 = u3.subscriptions.create!(subscription_plan_id: 4)
+	sub8 = u3.subscriptions.create!(subscription_plan_id: 3)
+	sub9 = u4.subscriptions.create!(subscription_plan_id: 1)
+	sub10 = u4.subscriptions.create!(subscription_plan_id: 2)
+	sub11 = u4.subscriptions.create!(subscription_plan_id: 3)
+end
