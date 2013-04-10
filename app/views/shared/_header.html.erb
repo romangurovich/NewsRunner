@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>NewsRunner <small>subscribe to your favorite newspapers</small></h1>
+  <%= log_in_toggle %>
+  <div class="navbar">
+	  <div class="navbar-inner">
+	    <%= link_to 'Home', root_path, class: "brand" %>
+	    <ul class="nav">
+	      <li>
+	      	<%= link_to 'Newspapers', newspapers_path %>
+	      </li>
+	      <li>
+	      	<%= link_to 'Users', users_path %>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+</div>

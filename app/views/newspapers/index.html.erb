@@ -1,0 +1,12 @@
+<h3>Newspapers</h3>
+
+<ol>
+	<% @newspapers.each do |newspaper| %>
+		<li class="well">
+			<%= link_to newspaper.title, newspaper_path(newspaper) %>
+			<small>
+				<%#= link_to 'subscribe', new_newspaper_subscription_path(newspaper) %>
+			</small>
+		</li>
+  <% end %>
+</ol>
