@@ -1,0 +1,12 @@
+<h3>Users</h3>
+
+<ol>
+	<% @users.each do |user| %>
+		<li class="well">
+			<%= link_to user.name, user_path(user) %>
+			<small>
+				<%#= link_to 'subscribe', new_newspaper_subscription_path(newspaper) %>
+			</small>
+		</li>
+  <% end %>
+</ol>

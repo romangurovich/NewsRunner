@@ -3,5 +3,5 @@ class Newspaper < ActiveRecord::Base
   validates :editor, :title, presence: true
   validates :title, uniqueness: { scope: :editor }
 
-  has_many :subscription_plans
+  has_many :subscription_plans, inverse_of: :newspaper
 end

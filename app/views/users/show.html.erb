@@ -1,0 +1,23 @@
+<p class = "lead">
+	<big><%= @user.name %></big> is subscribed to the following newspapers
+</p>
+
+<ol>
+	<% @user.subscription_plans.each do |subscription_plan| %>
+		<li class="well">
+			<% newspaper = subscription_plan.newspaper %>
+			<%= link_to newspaper.title, newspaper_path(newspaper) %>
+			Subscription type: <%= subscription_plan.weekly == true ? "weekly" : "daily" %>
+			<%= number_to_currency(subscription_plan.price) %>
+			<small>
+				<%#= link_to 'subscribe', new_newspaper_subscription_path(newspaper) %>
+			</small>
+		</li>
+  <% end %>
+</ol>
+
+<ul class="nav nav-pills">
+  <li>
+  	<%= link_to 'edit', edit_user_path(@user) %>
+  </li>
+</ul>
