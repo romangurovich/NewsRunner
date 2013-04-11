@@ -10,16 +10,18 @@
 	<p>
 
 	<% unless newspaper.persisted? %>
+		<div class= "well">
 		<%= f.fields_for :subscription_plans do |subscription_plan| %>
 			<p>
-				<%= subscription_plan.label :subscription_type %>
-				<%= subscription_plan.select :subscription_type, [['weekly', 1], ['daily', 0]] %>
+				<%= subscription_plan.label :weekly, "Subscription Type" %>
+				<%= subscription_plan.select :weekly, [['weekly', true], ['daily', false]] %>
 			</p>
 			<p>
 				<%= subscription_plan.label :price %>
 				<%= subscription_plan.text_field :price %>
 			</p>
 		<% end %>
+		</div>
 	<% end %>
 
 	<p>

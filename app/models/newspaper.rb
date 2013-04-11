@@ -1,5 +1,5 @@
 class Newspaper < ActiveRecord::Base
-  attr_accessible :editor, :title
+  attr_accessible :editor, :title, :subscription_plans_attributes
   validates :editor, :title, presence: true
   validates :title, uniqueness: { scope: :editor }
 

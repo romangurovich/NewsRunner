@@ -1,4 +1,4 @@
-class SubscriptionsController < ApplicationController
+class SubscriptionsPlansController < ApplicationController
 	def show
 		@subscription_plan = SubscriptionPlan.find(params[:id])
 	end
