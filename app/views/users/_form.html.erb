@@ -1,0 +1,48 @@
+<%= form_for(user) do |f| %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	<p>
+
+	<p>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	<p>
+
+	<div class= "well">
+		<% if user.persisted? %> 
+			<% SubscriptionPlan.all.each do |subscription_plan| %>
+				<% type = (subscription_plan.weekly == true ? "weekly" : "daily") %>
+				<% newspaper = subscription_plan.newspaper.title %>
+				<label>			
+					<%= check_box_tag(
+								"user[subscription_plan_ids][]",
+								subscription_plan.id,
+								user.subscription_plan_ids.include?(subscription_plan.id)
+						)%>
+					<%= "#{newspaper} - #{type}: #{number_to_currency(subscription_plan.price)}" %>
+				</label>
+			<% end %>
+			<%= hidden_field_tag "user[subscription_plan_ids][]" %>
+		<% else %>
+			<% Newspaper.all.each do |newspaper| %>
+			<label><%= newspaper.title %>
+				<select name = "user[subscription_plan_ids][]">
+					<option value = "">Not subscribed</option>
+					<% newspaper.subscription_plans.each do |subscription_plan| %>
+						<% type = (subscription_plan.weekly == true ? "weekly" : "daily") %>
+						<option value = <%= "#{subscription_plan.id}" %>>
+							<%= "#{type}: #{number_to_currency(subscription_plan.price)}" %>
+						</option>
+					<% end %>
+				</select>
+			</label>
+			<% end %>		
+			<%= hidden_field_tag "user[subscription_plan_ids][]" %>
+		<% end %>
+	</div>
+
+	<p>
+		<%= f.submit user.persisted? ? "Update User" : "Sign Up" %>
+	</p>
+<% end %>
